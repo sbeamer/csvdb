@@ -18,8 +18,8 @@ class reader:
     f = open(filename, 'r')
     lines = f.readlines()
     fields_full = lines[0].strip().split(delim)
-    grab_name = lambda s: s[0:s.find('(')]
-    grab_type = lambda s: s[s.find('(')+1:s.find(')')]
+    grab_name = lambda s: s[0:s.find('(')] if ('(' in s) else s
+    grab_type = lambda s: s[s.find('(')+1:s.find(')')] if ('(' in s) else 's'
     fields = map(grab_name, fields_full)
     types = map(grab_type, fields_full)
     width = len(fields)
