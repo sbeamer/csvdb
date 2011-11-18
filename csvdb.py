@@ -7,14 +7,17 @@ from copy import deepcopy
 
 class reader:
   def __init__(self):
+    """Return a new blank reader"""
     self.data = []
 
 
   def __len__(self):
+    """Return the number of points in the reader"""
     return len(self.data)
 
 
   def read_input(self, filename, delim=','):
+    """Read in filename and append it to data"""
     f = open(filename, 'r')
     lines = f.readlines()
     fields_full = lines[0].strip().split(delim)
@@ -43,6 +46,7 @@ class reader:
 
 
   def get_field(self, field):
+    """Return a list of all values for field"""
     if not isinstance(field,list):
       field = [field]
     grabbed = []
@@ -55,12 +59,17 @@ class reader:
 
 
   def get_values(self, field):
+    """Return a list of all the unique values for field"""
     l = list(set(map(lambda x: x.get(field,None), self.data)))
     l.sort()
     return l
 
 
   def filter_points(self, criteria):
+    """Return a new reader whose points don't match criteria
+
+    criteria is a dict (or list of dicts) of (field,value)
+    """
     if not isinstance(criteria,list):
       criteria = [criteria]
     def search(x):
@@ -74,6 +83,10 @@ class reader:
 
 
   def grab_points(self, criteria):
+    """Return a new reader whose points don't match criteria
+
+    criteria is a dict (or list of dicts) of (field,value)
+    """
     if not isinstance(criteria,list):
       criteria = [criteria]
     def search(x):
@@ -87,6 +100,7 @@ class reader:
 
 
   def to_float(self, fields):
+    """Make all values of fields type float"""
     if not isinstance(fields,list):
       fields = [fields]
     for f in fields:
@@ -95,6 +109,7 @@ class reader:
 
 
   def to_int(self, fields):
+    """Make all values of fields type int"""
     if not isinstance(fields,list):
       fields = [fields]
     for f in fields:
