@@ -68,7 +68,7 @@ class reader:
   def filter_points(self, criteria):
     """Return a new reader whose points don't match criteria
 
-    criteria is a dict (or list of dicts) of (field,value)
+    criteria is a tuple (or list of tuples) of (field,value)
     """
     if not isinstance(criteria,list):
       criteria = [criteria]
@@ -83,9 +83,9 @@ class reader:
 
 
   def grab_points(self, criteria):
-    """Return a new reader whose points don't match criteria
+    """Return a new reader whose points match criteria
 
-    criteria is a dict (or list of dicts) of (field,value)
+    criteria is a tuple (or list of tuples) of (field,value)
     """
     if not isinstance(criteria,list):
       criteria = [criteria]
