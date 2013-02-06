@@ -51,7 +51,7 @@ class reader:
 
 
   def get_field(self, field):
-    """Return a list of all values for field"""
+    """Return a list of all values for field(s)"""
     if not isinstance(field,list):
       field = [field]
     grabbed = []
@@ -70,7 +70,7 @@ class reader:
     return l
 
 
-  def filter_points(self, criteria):
+  def exclude_points(self, criteria):
     """Return a new reader whose points don't match criteria
 
     criteria is a tuple (or list of tuples) of (field,value)
