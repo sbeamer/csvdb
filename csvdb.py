@@ -16,10 +16,15 @@ class reader:
     return len(self.data)
 
 
-  def read_input(self, filename, delim=','):
+  def read_file(self, filename, delim=','):
     """Read in filename and append it to data"""
     f = open(filename, 'r')
     lines = f.readlines()
+    self.read_input(lines,delim)
+
+
+  def read_input(self, lines, delim=','):
+    """Read in list of strings and append it to data"""
     fields_full = lines[0].strip().split(delim)
     grab_name = lambda s: s[0:s.find('(')] if ('(' in s) else s
     grab_type = lambda s: s[s.find('(')+1:s.find(')')] if ('(' in s) else 's'
