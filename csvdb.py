@@ -9,6 +9,7 @@ class reader:
   def __init__(self):
     """Return a new blank reader"""
     self.data = []
+    self.fields = []
 
 
   def __len__(self):
@@ -48,6 +49,7 @@ class reader:
         make_ints += [field]      
     self.to_float(make_floats)
     self.to_int(make_ints)
+    self.fields = list(set(self.fields + fields))
 
 
   def get_field(self, field):
