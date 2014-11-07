@@ -34,6 +34,8 @@ class reader:
     width = len(fields)
     for line in lines[1:]:
       split = line.strip().split(delim)
+      if len(split) == 1:
+        continue
       if len(split) != width:
         print 'Error: line has wrong number of fields'
         print ' Expect(%u):' % width, fields
