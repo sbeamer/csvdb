@@ -57,8 +57,7 @@ class reader:
   def get_field(self, field):
     """Return a list of all values for field(s)"""
     if not isinstance(field,list):
-      field = [field]
-    grabbed = []
+      return [d.get(field,None) for d in self.data]
     def grabber(x):
       point = []
       for f in field:
